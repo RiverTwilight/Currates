@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://www.ygktool.com">
+<a href="https://www.ygeeker.com">
   <img width="180" src="./dist/icon/android-icon-192x192.png">
 </a>
 
@@ -32,13 +32,18 @@ https://github.com/RiverTwilight/Timeline/assets/52880665/57179574-3c24-48ea-b21
 
 ## Contribution
 
-```
-yarn run dev
+```bash
+yarn run dev # Start Rollup server
+yarn run dev:style # Start Tailwind server
 ```
 
 The you can load the unpacked extension from `dist` in the extension setting page.
 
 Open `test/index.html` to test the extension.
+
+### How hot-load server works
+
+Do not modify `manifest.json` directly in the `dist` folder. Edit `init.js` instead.
 
 ### How it works
 
