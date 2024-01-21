@@ -1,7 +1,7 @@
 import fs from "fs";
 
 const rawConfig = {
-	name: "Currency - Convert Currency by Selecting the Text",
+	name: "Currency - Better Currency Converter",
 	manifest_version: 3,
 	version: "1.0",
 	icons: {

@@ -1,3 +1,3 @@
-import main from "./utils/content"
+import main from "./utils/content.js"
 
 main();
