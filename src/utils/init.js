@@ -18,6 +18,12 @@ const rawConfig = {
 			js: ["content.bundle.cjs.js"],
 		},
 	],
+	web_accessible_resources: [
+		{
+			resources: ["css/popup.css"],
+			matches: ["<all_urls>"],
+		},
+	],
 	background: {
 		service_worker: "background.js",
 	},

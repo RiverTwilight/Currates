@@ -69,11 +69,11 @@ export default function Floating() {
 	return (
 		<div
 			ref={floatingRef}
-			className="fixed max-w-xs bg-white dark:bg-gray-800 rounded-lg shadow-2xl border-yellow-600 border-solid border-2"
+			className="cr-fixed cr-max-w-xs cr-bg-white dark:bg-gray-800 rounded-lg shadow-2xl border-yellow-600 border-solid border-2"
 			style={{ display: "none" }}
 		>
-			<div className="p-2">
-				<div className="flex justify-between items-center mb-4">
+			<div className="cr-p-2">
+				<div className="cr-flex cr-justify-between items-center mb-4">
 					<span className="text-md text-slate-500">$396</span>
 				</div>
 				<div className="text-4xl font-bold text-slate-800 mb-2">
@@ -85,7 +85,7 @@ export default function Floating() {
 				<div></div>
 			</div>
 
-			<div className="bg-yellow-700 p-4 flex justify-between items-center w-full h-12">
+			<div className="cr-bg-yellow-700 p-4 flex justify-between items-center w-full h-12">
 				<div className="flex space-x-1"></div>
 				<div className="flex items-center"></div>
 			</div>

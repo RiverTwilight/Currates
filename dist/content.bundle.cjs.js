@@ -104,14 +104,14 @@ function Floating() {
   }, [popupVisible]);
   return y("div", {
     ref: floatingRef,
-    className: "fixed max-w-xs bg-white dark:bg-gray-800 rounded-lg shadow-2xl border-yellow-600 border-solid border-2",
+    className: "cr-fixed cr-max-w-xs cr-bg-white dark:bg-gray-800 rounded-lg shadow-2xl border-yellow-600 border-solid border-2",
     style: {
       display: "none"
     }
   }, y("div", {
-    className: "p-2"
+    className: "cr-p-2"
   }, y("div", {
-    className: "flex justify-between items-center mb-4"
+    className: "cr-flex cr-justify-between items-center mb-4"
   }, y("span", {
     className: "text-md text-slate-500"
   }, "$396")), y("div", {
@@ -119,7 +119,7 @@ function Floating() {
   }, "\xA5", Math.floor(amoutRes * 100) / 100), y("div", {
     className: "text-sm text-gray-500 mb-4"
   }, "Approximately equals to 100 cups of coffee"), y("div", null)), y("div", {
-    className: "bg-yellow-700 p-4 flex justify-between items-center w-full h-12"
+    className: "cr-bg-yellow-700 p-4 flex justify-between items-center w-full h-12"
   }, y("div", {
     className: "flex space-x-1"
   }), y("div", {
@@ -140,10 +140,8 @@ function installFloatingService() {
 
   // Append the floatingContainer to the document body
   document.body.appendChild(floatingContainer);
-
-  // Inject Tailwind CSS into the shadow root
   const link = document.createElement("link");
-  link.href = "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css";
+  link.href = chrome.runtime.getURL("css/popup.css");
   link.type = "text/css";
   link.rel = "stylesheet";
   shadowRoot.appendChild(link);
