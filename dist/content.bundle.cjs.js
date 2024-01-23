@@ -89,6 +89,18 @@ function estimateValue(amount) {
   return res;
 }
 
+function PhoneIcon () {
+  return y("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    height: "24",
+    viewBox: "0 -960 960 960",
+    className: "cr-fill-themed",
+    width: "24"
+  }, y("path", {
+    d: "M280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-200v120h400v-120H280Zm200 100q17 0 28.5-11.5T520-180q0-17-11.5-28.5T480-220q-17 0-28.5 11.5T440-180q0 17 11.5 28.5T480-140ZM280-320h400v-400H280v400Zm0-480h400v-40H280v40Zm0 560v120-120Zm0-560v-40 40Z"
+  }));
+}
+
 function CoffeeIcon () {
   return y("svg", {
     xmlns: "http://www.w3.org/2000/svg",
@@ -158,14 +170,14 @@ function Floating() {
   }, [popupVisible]);
   return y("div", {
     ref: floatingRef,
-    className: "z-[999] cr-fixed cr-min-w-56 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2",
+    className: "cr-z-[999] cr-text-slate-800 dark:cr-text-white cr-fixed cr-min-w-56 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2",
     style: {
       display: "none"
     }
   }, y("div", {
     className: "cr-bg-themed cr-px-1 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12"
   }, y("div", {
-    className: "cr-flex cr-items-center cr-space-x-1"
+    className: "cr-text-white cr-flex cr-items-center cr-space-x-1"
   }, "Current"), y("button", {
     onClick: hidePopup,
     className: "p-1"
@@ -184,17 +196,17 @@ function Floating() {
   }, y("span", {
     className: "cr-text-md cr-text-slate-400"
   }, rawAmount), y("select", null, y("option", null, "CNY"))), y("div", {
-    className: "cr-text-4xl cr-font-bold cr-text-slate-800 dark:cr-text-white mb-2"
+    className: "cr-text-4xl cr-font-bold mb-2"
   }, convertRes.length > 0 ? `${getSymbol(convertRes[0].currency)}${Math.floor(convertRes[0].amount * 100) / 100}` : "---.--"), y("div", {
-    className: "cr-bg-slate-500 cr-w-full cr-my-2 cr-h-[2px]"
+    className: "cr-bg-slate-200 dark:cr-bg-slate-500 cr-w-full cr-my-2 cr-h-[2px]"
   }), y("div", null, convertRes.slice(1).map(res => y("div", {
     className: "cr-flex cr-justify-between cr-px-1 cr-py-1"
   }, y("div", null, res.currency), y("div", null, convertTo2Float(res.amount))))), y("div", {
-    className: "cr-bg-slate-500 cr-w-full cr-my-2 cr-h-[2px]"
+    className: "cr-bg-slate-200 dark:cr-bg-slate-500 cr-w-full cr-my-2 cr-h-[2px]"
   }), itemValue && y("div", {
     className: "mt-2"
   }, y("div", {
-    className: "cr-text-sm cr-text-center cr-text-gray-500"
+    className: "cr-text-sm cr-text-center cr-text-slate-500 dark:cr-text-gray-500"
   }, "Approximately equals to", y("span", {
     className: "cr-text-themed"
   }, ` ${itemValue.count} ${itemValue.name}`)), y("div", {
@@ -202,7 +214,7 @@ function Floating() {
   }, Array(Math.min(itemValue.count, 10)).fill(0).map(_ => ({
     egg: y(CoffeeIcon, null),
     coffee: y(CoffeeIcon, null),
-    iphone: y(CoffeeIcon, null),
+    iphone: y(PhoneIcon, null),
     paper: y(CoffeeIcon, null)
   })[itemValue.id])))));
 }
