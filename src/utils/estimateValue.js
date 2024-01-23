@@ -1,14 +1,22 @@
 const ITEM_VALUE = [
 	{
-		name: "Eggs",
+		name: "iPhone 15",
+		id: "iphone",
+		value: 5999,
+	},
+	{
+		id: "egg",
+		name: "Egg(s)",
 		value: 3,
 	},
 	{
-		name: "Apple",
+		id: "apple",
+		name: "Apple(s)",
 		value: 2,
 	},
 	{
-		name: "Paper",
+		id: "paper",
+		name: "Papers",
 		value: 0.1,
 	},
 ];
@@ -21,7 +29,8 @@ function estimateValue(amount) {
 		if (item.value < amount) {
 			res = {
 				name: item.name,
-				count: amount / item.value,
+				count: Math.floor(amount / item.value),
+                id: item.id
 			};
 			break;
 		}

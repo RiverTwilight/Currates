@@ -17,6 +17,7 @@ https://github.com/RiverTwilight/Timeline/assets/52880665/57179574-3c24-48ea-b21
 ## Features
 
 -   [x] Detect & convert currency by selecting text
+-   [-] Cryptocurrency
 -   [x] Display multiple results in one screen
 -   [x] Estimate value based on items
 -   [x] Full open-source, no privacy worry
@@ -53,6 +54,11 @@ After user opened a webpage, the extension will:
 2. Render React app to the root
 3. Inject prefixed style to the page
 4. The React app listen to the mouse event
+
+## Credits
+
+-   [CoinMarketCap](https://pro.coinmarketcap.com/signup/?plan=0): API
+-   [OpenExchange](https://pro.coinmarketcap.com/signup/?plan=0): API
 
 ## License
 

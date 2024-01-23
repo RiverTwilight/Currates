@@ -1,6 +1,9 @@
 import { h, Component } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
 import { extractAmount, convertTo2Float, getSymbol } from "../utils/helpers";
+import estimateValue from "../utils/estimateValue";
+import CoffeeIcon from "./icons/CoffeeIcon";
+import { useMemo } from "react";
 
 export default function Floating() {
 	const floatingRef = useRef(null);
@@ -23,6 +26,12 @@ export default function Floating() {
 			setPopupVisible(false);
 		}
 	};
+
+	const itemValue = useMemo(
+		() =>
+			convertRes.length > 0 ? estimateValue(convertRes[0].amount) : null,
+		[convertRes]
+	);
 
 	useEffect(() => {
 		const handleTextSelection = async (e) => {
@@ -78,7 +87,7 @@ export default function Floating() {
 			className="z-[999] cr-fixed cr-min-w-56 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2"
 			style={{ display: "none" }}
 		>
-			<div className="cr-bg-themed cr-px-2 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12">
+			<div className="cr-bg-themed cr-px-1 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12">
 				<div className="cr-flex cr-items-center cr-space-x-1">
 					Current
 				</div>
@@ -110,7 +119,7 @@ export default function Floating() {
 						  }`
 						: "---.--"}
 				</div>
-				<div className="cr-bg-slate-400 cr-w-full cr-my-2 cr-h-[2px]"></div>
+				<div className="cr-bg-slate-500 cr-w-full cr-my-2 cr-h-[2px]"></div>
 				<div>
 					{convertRes.slice(1).map((res) => (
 						<div className="cr-flex cr-justify-between cr-px-1 cr-py-1">
@@ -119,10 +128,28 @@ export default function Floating() {
 						</div>
 					))}
 				</div>
-				{/* <div className="cr-bg-gray-200 cr-w-full cr-my-2 cr-h-[2px]"></div>
-				<div className="cr-text-sm cr-text-gray-500 cr-mb-4">
-					Approximately equals to 100 cups of coffee
-				</div> */}
+				<div className="cr-bg-slate-500 cr-w-full cr-my-2 cr-h-[2px]"></div>
+				{itemValue && (
+					<div className="mt-2">
+						<div className="cr-text-sm cr-text-center cr-text-gray-500">
+							Approximately equals to
+							<span className="cr-text-themed">{` ${itemValue.count} ${itemValue.name}`}</span>
+						</div>
+						<div className="cr-flex cr-py-2 cr-justify-center">
+							{Array(Math.min(itemValue.count, 10))
+								.fill(0)
+								.map(
+									(_) =>
+										({
+											egg: <CoffeeIcon />,
+											coffee: <CoffeeIcon />,
+											iphone: <CoffeeIcon />,
+											paper: <CoffeeIcon />,
+										}[itemValue.id])
+								)}
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);
