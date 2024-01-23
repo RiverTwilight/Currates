@@ -49,7 +49,8 @@ function extractAmount(rawText) {
 function Floating() {
   const floatingRef = _(null);
   const [popupVisible, setPopupVisible] = h(false);
-  const [amoutRes, setAmoutRes] = h(999.99);
+  const [amoutRes, setAmoutRes] = h(null);
+  const [rawAmount, setRawAmount] = h("$---");
 
   // Function to create/update popup position
   const updatePopupPosition = (x, y) => {
@@ -75,7 +76,12 @@ function Floating() {
       if (selectedText) {
         const extractedAmount = extractAmount(selectedText);
         updatePopupPosition(e.clientX, e.clientY);
-        if (extractedAmount) {
+        if (rawAmount) {
+          setRawAmount(`${{
+            EUR: "€",
+            USD: "$",
+            CNY: "¥"
+          }[extractedAmount.currency]}${extractedAmount.amount}`);
           const res = await chrome.runtime.sendMessage({
             type: "convert",
             amount: extractedAmount.amount,
@@ -104,27 +110,34 @@ function Floating() {
   }, [popupVisible]);
   return y("div", {
     ref: floatingRef,
-    className: "cr-fixed cr-max-w-xs cr-bg-white dark:bg-gray-800 rounded-lg shadow-2xl border-yellow-600 border-solid border-2",
+    className: "cr-fixed cr-w-56 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2",
     style: {
       display: "none"
     }
   }, y("div", {
+    className: "cr-bg-themed px-1 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12"
+  }, y("div", {
+    className: "cr-flex cr-items-center cr-space-x-1"
+  }, "Current"), y("button", {
+    onClick: hidePopup,
+    className: "p-1"
+  }, y("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    height: "24",
+    viewBox: "0 -960 960 960",
+    width: "24",
+    className: "cr-fill-white"
+  }, y("path", {
+    d: "M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z"
+  })))), y("div", {
     className: "cr-p-2"
   }, y("div", {
     className: "cr-flex cr-justify-between items-center mb-4"
   }, y("span", {
-    className: "text-md text-slate-500"
-  }, "$396")), y("div", {
-    className: "text-4xl font-bold text-slate-800 mb-2"
-  }, "\xA5", Math.floor(amoutRes * 100) / 100), y("div", {
-    className: "text-sm text-gray-500 mb-4"
-  }, "Approximately equals to 100 cups of coffee"), y("div", null)), y("div", {
-    className: "cr-bg-yellow-700 p-4 flex justify-between items-center w-full h-12"
-  }, y("div", {
-    className: "flex space-x-1"
-  }), y("div", {
-    className: "flex items-center"
-  })), y("br", null));
+    className: "cr-text-md cr-text-slate-400"
+  }, rawAmount)), y("div", {
+    className: "cr-text-4xl cr-font-bold cr-text-slate-800 dark:cr-text-white mb-2"
+  }, amoutRes ? `¥${Math.floor(amoutRes * 100) / 100}` : "---.--")));
 }
 
 function installFloatingService() {

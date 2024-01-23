@@ -17,6 +17,14 @@ function convertToNumeric(amountStr) {
 	return parseFloat(amount) * multiplier;
 }
 
+function getSymbol(currency) {
+	return {
+		EUR: "€",
+		USD: "$",
+		CNY: "¥",
+	}[currency];
+}
+
 function extractAmount(rawText) {
 	// Regex for currencies starting with a symbol, including commas
 	let symbolRegex = /([\$¥](\d{1,3}(?:,\d{3})*(?:\.\d+)?))/;

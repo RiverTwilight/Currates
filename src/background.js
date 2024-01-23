@@ -31,7 +31,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 });
 
 function convertAmount(amountStr, amountCurrency, rates) {
-	console.log(amountCurrency, amountStr, rates)
+	console.log(amountCurrency, amountStr, rates);
 	let value = parseFloat(amountStr);
 	let targetCurrency = "CNY"; // This should be configurable
 	return (value / rates[amountCurrency]) * rates[targetCurrency]; // Assuming USD as base for simplicity

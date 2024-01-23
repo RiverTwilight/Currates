@@ -25,7 +25,7 @@ const rawConfig = {
 		},
 	],
 	background: {
-		service_worker: "background.js",
+		service_worker: "background.bundle.cjs.js",
 	},
 	action: {
 		default_popup: "popup.html",

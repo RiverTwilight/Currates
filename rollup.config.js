@@ -57,6 +57,17 @@ export default [
 		plugins: plugins,
 	},
 	{
+		input: "src/background.js",
+		output: [
+			{
+				file: "dist/background.bundle.cjs.js",
+				format: "cjs",
+				sourcemap: false,
+			},
+		],
+		plugins: [...plugins],
+	},
+	{
 		input: "src/pages/options/index.jsx",
 		output: [
 			{

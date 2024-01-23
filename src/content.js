@@ -1,5 +1,5 @@
 import { h, Component, render, createElement } from "preact";
-import Floating from "../components/Floating.jsx";
+import Floating from "./components/Floating.jsx";
 
 function installFloatingService() {
 	const floatingContainer = document.createElement("div");
