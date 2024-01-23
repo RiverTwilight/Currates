@@ -17,7 +17,6 @@ export default function Floating() {
 		}
 	};
 
-	// Function to hide the popup
 	const hidePopup = () => {
 		if (floatingRef.current) {
 			floatingRef.current.style.display = "none";
@@ -50,7 +49,6 @@ export default function Floating() {
 			}
 		};
 
-		// Event listener for outside click
 		const handleOutsideClick = (e) => {
 			// Delay handling to ensure it doesn't conflict with the text selection
 			setTimeout(() => {
@@ -100,6 +98,9 @@ export default function Floating() {
 					<span className="cr-text-md cr-text-slate-400">
 						{rawAmount}
 					</span>
+					<select>
+						<option>CNY</option>
+					</select>
 				</div>
 				<div className="cr-text-4xl cr-font-bold cr-text-slate-800 dark:cr-text-white mb-2">
 					{convertRes.length > 0

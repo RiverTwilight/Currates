@@ -69,8 +69,6 @@ function Floating() {
       setPopupVisible(true);
     }
   };
-
-  // Function to hide the popup
   const hidePopup = () => {
     if (floatingRef.current) {
       floatingRef.current.style.display = "none";
@@ -94,8 +92,6 @@ function Floating() {
         }
       }
     };
-
-    // Event listener for outside click
     const handleOutsideClick = e => {
       // Delay handling to ensure it doesn't conflict with the text selection
       setTimeout(() => {
@@ -138,7 +134,7 @@ function Floating() {
     className: "cr-flex cr-justify-between items-center mb-4"
   }, y("span", {
     className: "cr-text-md cr-text-slate-400"
-  }, rawAmount)), y("div", {
+  }, rawAmount), y("select", null, y("option", null, "CNY"))), y("div", {
     className: "cr-text-4xl cr-font-bold cr-text-slate-800 dark:cr-text-white mb-2"
   }, convertRes.length > 0 ? `${getSymbol(convertRes[0].currency)}${Math.floor(convertRes[0].amount * 100) / 100}` : "---.--"), y("div", {
     className: "cr-bg-slate-400 cr-w-full cr-my-2 cr-h-[2px]"
