@@ -1,15 +1,13 @@
 import { h, Component } from "preact";
 import { useEffect, useState, useRef } from "preact/hooks";
-import { extractAmount, getSymbol } from "../utils/helpers";
+import { extractAmount, convertTo2Float, getSymbol } from "../utils/helpers";
 
 export default function Floating() {
 	const floatingRef = useRef(null);
 	const [popupVisible, setPopupVisible] = useState(false);
-	const [amoutRes, setAmoutRes] = useState(null);
-	const [targetCurrency, setTargetCurrency] = useState("USD");
+	const [convertRes, setConvertRes] = useState([]);
 	const [rawAmount, setRawAmount] = useState("$---");
 
-	// Function to create/update popup position
 	const updatePopupPosition = (x, y) => {
 		if (floatingRef.current) {
 			floatingRef.current.style.left = `${x}px`;
@@ -28,7 +26,6 @@ export default function Floating() {
 	};
 
 	useEffect(() => {
-		// Event listener for text selection
 		const handleTextSelection = async (e) => {
 			let selectedText = window.getSelection().toString();
 			if (selectedText) {
@@ -47,8 +44,8 @@ export default function Floating() {
 						amount: extractedAmount.amount,
 						currency: extractedAmount.currency,
 					});
-					setAmoutRes(res.convertedAmount);
-					// setTargetCurrency(res.);
+
+					setConvertRes(res["data"]);
 				}
 			}
 		};
@@ -79,10 +76,10 @@ export default function Floating() {
 	return (
 		<div
 			ref={floatingRef}
-			className="cr-fixed cr-w-56 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2"
+			className="cr-fixed cr-min-w-56 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2"
 			style={{ display: "none" }}
 		>
-			<div className="cr-bg-themed px-1 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12">
+			<div className="cr-bg-themed px-3 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12">
 				<div className="cr-flex cr-items-center cr-space-x-1">
 					Current
 				</div>
@@ -105,9 +102,20 @@ export default function Floating() {
 					</span>
 				</div>
 				<div className="cr-text-4xl cr-font-bold cr-text-slate-800 dark:cr-text-white mb-2">
-					{amoutRes
-						? `${getSymbol()}${Math.floor(amoutRes * 100) / 100}`
+					{convertRes.length > 0
+						? `${getSymbol(convertRes[0].currency)}${
+								Math.floor(convertRes[0].amount * 100) / 100
+						  }`
 						: "---.--"}
+				</div>
+				<div className="cr-bg-slate-400 cr-w-full cr-my-2 cr-h-[2px]"></div>
+				<div>
+					{convertRes.slice(1).map((res) => (
+						<div className="cr-flex cr-justify-between cr-px-1 cr-py-1">
+							<div>{res.currency}</div>
+							<div>{convertTo2Float(res.amount)}</div>
+						</div>
+					))}
 				</div>
 				{/* <div className="cr-bg-gray-200 cr-w-full cr-my-2 cr-h-[2px]"></div>
 				<div className="cr-text-sm cr-text-gray-500 cr-mb-4">

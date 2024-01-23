@@ -22,6 +22,16 @@ function convertToNumeric(amountStr) {
   // Parse the numeric value
   return parseFloat(amount) * multiplier;
 }
+function getSymbol(currency) {
+  return {
+    EUR: "€",
+    USD: "$",
+    CNY: "¥"
+  }[currency];
+}
+function convertTo2Float(num) {
+  return Math.floor(num * 100) / 100;
+}
 function extractAmount(rawText) {
   // Regex for currencies starting with a symbol, including commas
   let symbolRegex = /([\$¥](\d{1,3}(?:,\d{3})*(?:\.\d+)?))/;
@@ -49,10 +59,8 @@ function extractAmount(rawText) {
 function Floating() {
   const floatingRef = _(null);
   const [popupVisible, setPopupVisible] = h(false);
-  const [amoutRes, setAmoutRes] = h(null);
+  const [convertRes, setConvertRes] = h([]);
   const [rawAmount, setRawAmount] = h("$---");
-
-  // Function to create/update popup position
   const updatePopupPosition = (x, y) => {
     if (floatingRef.current) {
       floatingRef.current.style.left = `${x}px`;
@@ -70,24 +78,19 @@ function Floating() {
     }
   };
   p(() => {
-    // Event listener for text selection
     const handleTextSelection = async e => {
       let selectedText = window.getSelection().toString();
       if (selectedText) {
         const extractedAmount = extractAmount(selectedText);
         updatePopupPosition(e.clientX, e.clientY);
         if (rawAmount) {
-          setRawAmount(`${{
-            EUR: "€",
-            USD: "$",
-            CNY: "¥"
-          }[extractedAmount.currency]}${extractedAmount.amount}`);
+          setRawAmount(`${getSymbol(extractedAmount.currency)}${extractedAmount.amount}`);
           const res = await chrome.runtime.sendMessage({
             type: "convert",
             amount: extractedAmount.amount,
             currency: extractedAmount.currency
           });
-          setAmoutRes(res.convertedAmount);
+          setConvertRes(res["data"]);
         }
       }
     };
@@ -110,12 +113,12 @@ function Floating() {
   }, [popupVisible]);
   return y("div", {
     ref: floatingRef,
-    className: "cr-fixed cr-w-56 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2",
+    className: "cr-fixed cr-min-w-56 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2",
     style: {
       display: "none"
     }
   }, y("div", {
-    className: "cr-bg-themed px-1 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12"
+    className: "cr-bg-themed px-3 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12"
   }, y("div", {
     className: "cr-flex cr-items-center cr-space-x-1"
   }, "Current"), y("button", {
@@ -137,7 +140,11 @@ function Floating() {
     className: "cr-text-md cr-text-slate-400"
   }, rawAmount)), y("div", {
     className: "cr-text-4xl cr-font-bold cr-text-slate-800 dark:cr-text-white mb-2"
-  }, amoutRes ? `¥${Math.floor(amoutRes * 100) / 100}` : "---.--")));
+  }, convertRes.length > 0 ? `${getSymbol(convertRes[0].currency)}${Math.floor(convertRes[0].amount * 100) / 100}` : "---.--"), y("div", {
+    className: "cr-bg-slate-400 cr-w-full cr-my-2 cr-h-[2px]"
+  }), y("div", null, convertRes.slice(1).map(res => y("div", {
+    className: "cr-flex cr-justify-between cr-px-1 cr-py-1"
+  }, y("div", null, res.currency), y("div", null, convertTo2Float(res.amount)))))));
 }
 
 function installFloatingService() {

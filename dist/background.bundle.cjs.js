@@ -2,21 +2,19 @@
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.type === "convert") {
-    let apiKey = "cabbb4fff29349a2a637f2cea009dac7"; // Replace with your API key
-    let apiUrl = `https://openexchangerates.org/api/latest.json?app_id=${apiKey}`;
     (async () => {
       try {
-        let response = await fetch(apiUrl);
-        let data = await response.json();
-        let rates = data.rates;
-        console.log(rates);
-        let convertedAmount = convertAmount(request.amount, request.currency, rates);
-        console.log("===>", convertedAmount);
-        chrome.storage.local.set({
-          convertedAmount: convertedAmount
+        let rates = await getRates();
+        let targetCurrency = ["USD", "EUR", "JPY", "CNY"];
+        let res = targetCurrency.map(tarCur => {
+          return {
+            amount: convertAmount(request.amount, request.currency, tarCur, rates),
+            currency: tarCur
+          };
         });
+        console.log("====>", res);
         sendResponse({
-          convertedAmount: convertedAmount
+          data: res
         });
       } catch (error) {
         console.error("Error fetching exchange rates:", error);
@@ -25,13 +23,30 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         });
       }
     })();
+  } else if (request.type === "equal") {
+    return {
+      amount: 1,
+      items: "apple"
+    };
   }
+
   // Return true to indicate that sendResponse will be called asynchronously
   return true;
 });
-function convertAmount(amountStr, amountCurrency, rates) {
-  console.log(amountCurrency, amountStr, rates);
+function convertAmount(amountStr, originalCurrency, targetCurrency, rates) {
   let value = parseFloat(amountStr);
-  let targetCurrency = "CNY"; // This should be configurable
-  return value / rates[amountCurrency] * rates[targetCurrency]; // Assuming USD as base for simplicity
+  return value / rates[originalCurrency] * rates[targetCurrency];
+}
+async function getRates() {
+  let apiKey = "cabbb4fff29349a2a637f2cea009dac7"; // Replace with your API key
+  let apiUrl = `https://openexchangerates.org/api/latest.json?app_id=${apiKey}`;
+
+  // chrome.storage.local.set({
+  // 	convertedAmount: convertedAmount,
+  // });
+
+  let response = await fetch(apiUrl);
+  let data = await response.json();
+  let rates = data.rates;
+  return rates;
 }

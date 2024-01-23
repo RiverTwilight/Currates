@@ -25,6 +25,10 @@ function getSymbol(currency) {
 	}[currency];
 }
 
+function convertTo2Float(num) {
+	return Math.floor(num * 100) / 100;
+}
+
 function extractAmount(rawText) {
 	// Regex for currencies starting with a symbol, including commas
 	let symbolRegex = /([\$¥](\d{1,3}(?:,\d{3})*(?:\.\d+)?))/;
@@ -65,4 +69,4 @@ function extractAmount(rawText) {
 	};
 }
 
-export { convertToNumeric, extractAmount };
+export { convertTo2Float, convertToNumeric, extractAmount, getSymbol };
