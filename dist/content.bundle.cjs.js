@@ -93,9 +93,10 @@ function Floating() {
       }
     };
     const handleOutsideClick = e => {
+      console.log(e.target);
       // Delay handling to ensure it doesn't conflict with the text selection
       setTimeout(() => {
-        if (popupVisible && floatingRef.current && !floatingRef.current.contains(e.target)) {
+        if (popupVisible && floatingRef.current && e.target.id !== "cr_container") {
           hidePopup();
         }
       }, 200);
@@ -148,6 +149,7 @@ function installFloatingService() {
   const shadowRoot = floatingContainer.attachShadow({
     mode: "open"
   });
+  floatingContainer.id = "cr_container";
 
   // Create a container inside the shadow root
   const shadowContainer = document.createElement("div");

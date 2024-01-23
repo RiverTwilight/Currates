@@ -50,12 +50,13 @@ export default function Floating() {
 		};
 
 		const handleOutsideClick = (e) => {
+			console.log(e.target);
 			// Delay handling to ensure it doesn't conflict with the text selection
 			setTimeout(() => {
 				if (
 					popupVisible &&
 					floatingRef.current &&
-					!floatingRef.current.contains(e.target)
+					e.target.id !== "cr_container"
 				) {
 					hidePopup();
 				}

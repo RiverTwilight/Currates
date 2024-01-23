@@ -18,6 +18,7 @@ https://github.com/RiverTwilight/Timeline/assets/52880665/57179574-3c24-48ea-b21
 
 -   [x] Detect & convert currency by selecting text
 -   [x] Display multiple results in one screen
+-   [x] Estimate value based on items
 -   [x] Full open-source, no privacy worry
 -   [x] Tiny & Super fast (Only 2kb packed size)
 -   [-] Exception List
