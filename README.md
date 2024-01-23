@@ -16,11 +16,12 @@ https://github.com/RiverTwilight/Timeline/assets/52880665/57179574-3c24-48ea-b21
 
 ## Features
 
--   [x] Save posts you see in timeline (auto mark engaged post)
--   [x] Preview the text and image
--   [x] Export data to JSON
--   [x] Can be used to export X bookmark
+-   [x] Detect & convert currency by selecting text
+-   [x] Display multiple results in one screen
 -   [x] Full open-source, no privacy worry
+-   [x] Tiny & Super fast (Only 2kb packed size)
+-   [-] Exception List
+-   [-] Customize OpenExchange key
 
 ## Get Current
 

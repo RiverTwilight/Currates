@@ -109,12 +109,12 @@ function Floating() {
   }, [popupVisible]);
   return y("div", {
     ref: floatingRef,
-    className: "cr-fixed cr-min-w-56 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2",
+    className: "z-[999] cr-fixed cr-min-w-56 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2",
     style: {
       display: "none"
     }
   }, y("div", {
-    className: "cr-bg-themed px-3 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12"
+    className: "cr-bg-themed cr-px-2 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12"
   }, y("div", {
     className: "cr-flex cr-items-center cr-space-x-1"
   }, "Current"), y("button", {

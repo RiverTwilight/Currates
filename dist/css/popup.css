@@ -661,6 +661,11 @@ video {
   padding-bottom: 0.25rem;
 }
 
+.cr-px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .cr-text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
