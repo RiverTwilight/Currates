@@ -12,7 +12,7 @@ const ITEM_VALUE = [
 	{
 		id: "egg",
 		name: "Egg(s)",
-		value: 3,
+		value: 1,
 	},
 	{
 		id: "paper",

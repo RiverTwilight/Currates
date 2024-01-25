@@ -68,10 +68,10 @@ export default [
 		plugins: [...plugins],
 	},
 	{
-		input: "src/pages/options/index.jsx",
+		input: "src/components/Popup.jsx",
 		output: [
 			{
-				file: "dist/options.bundle.cjs.js",
+				file: "dist/popup.bundle.cjs.js",
 				format: "cjs",
 				sourcemap: false,
 			},

@@ -45,7 +45,7 @@ function extractAmount(rawText) {
 	let symbolRegex = /([\$¥£€₩](\d{1,3}(?:,\d{3})*(?:\.\d+)?))/;
 	// Regex for currencies ending with a word, including large number words
 	let wordRegex =
-		/((\d{1,3}(?:,\d{3})*\s?(?:billion|million|thousand)?)\s(euros|euro|dollars|元|yen|yuan|pounds))/i;
+		/((\d{1,3}(?:,\d{3})*\s?(?:billion|million|thousand)?)\s?(euros|euro|dollars|dollar|RMB|元|yen|yuan|pounds))/i;
 
 	let symbolMatch = rawText.match(symbolRegex);
 	let wordMatch = rawText.match(wordRegex);
@@ -62,9 +62,9 @@ function extractAmount(rawText) {
 		? wordMatch[0]
 		: null;
 
-	console.log("SymbolMatch: ", symbolMatch);
-	console.log("WordMatch: ", wordMatch);
-	console.log("AmountMatch: ", amountMatched);
+	// console.log("SymbolMatch: ", symbolMatch);
+	// console.log("WordMatch: ", wordMatch);
+	// console.log("AmountMatch: ", amountMatched);
 
 	let currency = "USD";
 
@@ -76,8 +76,10 @@ function extractAmount(rawText) {
 		currency = "JPY";
 	} else if (textMatched.match(/(₩)/i)) {
 		currency = "KRW";
-	} else if (textMatched.match(/(元|yuan)/i)) {
+	} else if (textMatched.match(/(元|yuan|RMB)/i)) {
 		currency = "CNY";
+	} else if (textMatched.match(/(pounds)/i)) {
+		currency = "GBP";
 	}
 
 	return {

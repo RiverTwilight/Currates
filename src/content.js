@@ -16,7 +16,7 @@ function installFloatingService() {
 	document.body.appendChild(floatingContainer);
 
 	const link = document.createElement("link");
-	link.href = chrome.runtime.getURL("css/popup.css");
+	link.href = chrome.runtime.getURL("css/main.css");
 	link.type = "text/css";
 	link.rel = "stylesheet";
 	shadowRoot.appendChild(link);

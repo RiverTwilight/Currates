@@ -10,7 +10,6 @@ const rawConfig = {
 		96: "./icon/logo/android-icon-96x96.png",
 		128: "./icon/logo/icon-128.png",
 	},
-	options_page: "options.html",
 	permissions: ["storage"],
 	content_scripts: [
 		{
@@ -21,7 +20,7 @@ const rawConfig = {
 	],
 	web_accessible_resources: [
 		{
-			resources: ["css/popup.css", "icon/coffee.svg"],
+			resources: ["css/main.css"],
 			matches: ["<all_urls>"],
 		},
 	],
@@ -33,6 +32,7 @@ const rawConfig = {
 			16: "./icon/logo/android-icon-36x36.png",
 			48: "./icon/logo/android-icon-48x48.png",
 		},
+		default_popup: "popup.html",
 	},
 };
 
