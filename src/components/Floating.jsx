@@ -14,6 +14,25 @@ export default function Floating() {
 
 	const updatePopupPosition = (x, y) => {
 		if (floatingRef.current) {
+			const popupWidth = 384;
+			const popupHeight = 300;
+			const windowWidth = window.innerWidth;
+			const windowHeight = window.innerHeight;
+
+			// console.log("Window", `${windowWidth} x ${windowHeight}`);
+			// console.log("Click", `${x} , ${y}`);
+			// console.log("Floating", `${popupWidth} x ${popupHeight}`);
+
+			// Check if the popup goes beyond the right edge of the window
+			if (x + popupWidth > windowWidth) {
+				x -= x + popupWidth - windowWidth;
+			}
+
+			// Check if the popup goes beyond the bottom edge of the window
+			if (y + popupHeight > windowHeight) {
+				y -= y + popupHeight - windowHeight;
+			}
+
 			floatingRef.current.style.left = `${x}px`;
 			floatingRef.current.style.top = `${y}px`;
 			floatingRef.current.style.display = "block";
@@ -85,7 +104,8 @@ export default function Floating() {
 	return (
 		<div
 			ref={floatingRef}
-			className="cr-z-[999] cr-text-slate-800 dark:cr-text-white cr-fixed cr-min-w-56 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2"
+			id="cr_inner"
+			className="cr-z-[999] cr-text-slate-800 dark:cr-text-white cr-fixed cr-min-w-56 cr-max-w-sm cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2"
 			style={{ display: "none" }}
 		>
 			<div className="cr-bg-themed cr-px-1 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12">
