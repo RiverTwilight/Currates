@@ -1,7 +1,7 @@
 import fs from "fs";
 
 const rawConfig = {
-	name: "Currency - Immersive Currency Converter",
+	name: "Currates - Immersive Currency Converter",
 	manifest_version: 3,
 	version: "1.0",
 	icons: {
@@ -15,6 +15,7 @@ const rawConfig = {
 	content_scripts: [
 		{
 			matches: ["<all_urls>"],
+			all_frames: true,
 			js: ["content.bundle.cjs.js"],
 		},
 	],
@@ -26,6 +27,12 @@ const rawConfig = {
 	],
 	background: {
 		service_worker: "background.bundle.cjs.js",
+	},
+	action: {
+		default_icon: {
+			16: "./icon/logo/android-icon-36x36.png",
+			48: "./icon/logo/android-icon-48x48.png",
+		},
 	},
 };
 
