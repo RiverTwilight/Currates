@@ -17,6 +17,11 @@ function convertToNumeric(amountStr) {
 	return parseFloat(amount) * multiplier;
 }
 
+function convertAmount(amountStr, originalCurrency, targetCurrency, rates) {
+	let value = parseFloat(amountStr);
+	return (value / rates[originalCurrency]) * rates[targetCurrency];
+}
+
 // https://www.xe.com/symbols/
 function getSymbol(currency) {
 	return {
@@ -81,4 +86,10 @@ function extractAmount(rawText) {
 	};
 }
 
-export { convertTo2Float, convertToNumeric, extractAmount, getSymbol };
+export {
+	convertAmount,
+	convertTo2Float,
+	convertToNumeric,
+	extractAmount,
+	getSymbol,
+};

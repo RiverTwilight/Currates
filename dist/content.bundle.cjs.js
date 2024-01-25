@@ -22,6 +22,10 @@ function convertToNumeric(amountStr) {
   // Parse the numeric value
   return parseFloat(amount) * multiplier;
 }
+function convertAmount(amountStr, originalCurrency, targetCurrency, rates) {
+  let value = parseFloat(amountStr);
+  return value / rates[originalCurrency] * rates[targetCurrency];
+}
 
 // https://www.xe.com/symbols/
 function getSymbol(currency) {
@@ -128,11 +132,32 @@ function CoffeeIcon () {
 
 function g(n,t){for(var e in t)n[e]=t[e];return n}function C(n,t){for(var e in n)if("__source"!==e&&!(e in t))return !0;for(var r in t)if("__source"!==r&&n[r]!==t[r])return !0;return !1}function w(n){this.props=n;}(w.prototype=new b$1).isPureReactComponent=!0,w.prototype.shouldComponentUpdate=function(n,t){return C(this.props,n)||C(this.state,t)};var R=l$1.__b;l$1.__b=function(n){n.type&&n.type.__f&&n.ref&&(n.props.ref=n.ref,n.ref=null),R&&R(n);};var T=l$1.__e;l$1.__e=function(n,t,e,r){if(n.then)for(var u,o=t;o=o.__;)if((u=o.__c)&&u.__c)return null==t.__e&&(t.__e=e.__e,t.__k=e.__k),u.__c(n,t);T(n,t,e,r);};var I=l$1.unmount;function L(n,t,e){return n&&(n.__c&&n.__c.__H&&(n.__c.__H.__.forEach(function(n){"function"==typeof n.__c&&n.__c();}),n.__c.__H=null),null!=(n=g({},n)).__c&&(n.__c.__P===e&&(n.__c.__P=t),n.__c=null),n.__k=n.__k&&n.__k.map(function(n){return L(n,t,e)})),n}function U(n,t,e){return n&&(n.__v=null,n.__k=n.__k&&n.__k.map(function(n){return U(n,t,e)}),n.__c&&n.__c.__P===t&&(n.__e&&e.insertBefore(n.__e,n.__d),n.__c.__e=!0,n.__c.__P=e)),n}function D(){this.__u=0,this.t=null,this.__b=null;}function F(n){var t=n.__.__c;return t&&t.__a&&t.__a(n)}function V(){this.u=null,this.o=null;}l$1.unmount=function(n){var t=n.__c;t&&t.__R&&t.__R(),t&&!0===n.__h&&(n.type=null),I&&I(n);},(D.prototype=new b$1).__c=function(n,t){var e=t.__c,r=this;null==r.t&&(r.t=[]),r.t.push(e);var u=F(r.__v),o=!1,i=function(){o||(o=!0,e.__R=null,u?u(l):l());};e.__R=i;var l=function(){if(!--r.__u){if(r.state.__a){var n=r.state.__a;r.__v.__k[0]=U(n,n.__c.__P,n.__c.__O);}var t;for(r.setState({__a:r.__b=null});t=r.t.pop();)t.forceUpdate();}},c=!0===t.__h;r.__u++||c||r.setState({__a:r.__b=r.__v.__k[0]}),n.then(i,i);},D.prototype.componentWillUnmount=function(){this.t=[];},D.prototype.render=function(n,e){if(this.__b){if(this.__v.__k){var r=document.createElement("div"),o=this.__v.__k[0].__c;this.__v.__k[0]=L(this.__b,r,o.__O=o.__P);}this.__b=null;}var i=e.__a&&y(k$1,null,n.fallback);return i&&(i.__h=null),[y(k$1,null,e.__a?null:n.children),i]};var W=function(n,t,e){if(++e[1]===e[0]&&n.o.delete(t),n.props.revealOrder&&("t"!==n.props.revealOrder[0]||!n.o.size))for(e=n.u;e;){for(;e.length>3;)e.pop()();if(e[1]<e[0])break;n.u=e=e[2];}};(V.prototype=new b$1).__a=function(n){var t=this,e=F(t.__v),r=t.o.get(n);return r[0]++,function(u){var o=function(){t.props.revealOrder?(r.push(u),W(t,n,r)):u();};e?e(o):o();}},V.prototype.render=function(n){this.u=null,this.o=new Map;var t=S(n.children);n.revealOrder&&"b"===n.revealOrder[0]&&t.reverse();for(var e=t.length;e--;)this.o.set(t[e],this.u=[1,0,this.u]);return n.children},V.prototype.componentDidUpdate=V.prototype.componentDidMount=function(){var n=this;this.o.forEach(function(t,e){W(n,e,t);});};var B="undefined"!=typeof Symbol&&Symbol.for&&Symbol.for("react.element")||60103,H=/^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/,Z=/^on(Ani|Tra|Tou|BeforeInp|Compo)/,Y=/[A-Z0-9]/g,$="undefined"!=typeof document,q=function(n){return ("undefined"!=typeof Symbol&&"symbol"==typeof Symbol()?/fil|che|rad/:/fil|che|ra/).test(n)};b$1.prototype.isReactComponent={},["componentWillMount","componentWillReceiveProps","componentWillUpdate"].forEach(function(t){Object.defineProperty(b$1.prototype,t,{configurable:!0,get:function(){return this["UNSAFE_"+t]},set:function(n){Object.defineProperty(this,t,{configurable:!0,writable:!0,value:n});}});});var K=l$1.event;function Q(){}function X(){return this.cancelBubble}function nn(){return this.defaultPrevented}l$1.event=function(n){return K&&(n=K(n)),n.persist=Q,n.isPropagationStopped=X,n.isDefaultPrevented=nn,n.nativeEvent=n};var en={enumerable:!1,configurable:!0,get:function(){return this.class}},rn=l$1.vnode;l$1.vnode=function(n){"string"==typeof n.type&&function(n){var t=n.props,e=n.type,u={};for(var o in t){var i=t[o];if(!("value"===o&&"defaultValue"in t&&null==i||$&&"children"===o&&"noscript"===e||"class"===o||"className"===o)){var l=o.toLowerCase();"defaultValue"===o&&"value"in t&&null==t.value?o="value":"download"===o&&!0===i?i="":"ondoubleclick"===l?o="ondblclick":"onchange"!==l||"input"!==e&&"textarea"!==e||q(t.type)?"onfocus"===l?o="onfocusin":"onblur"===l?o="onfocusout":Z.test(o)?o=l:-1===e.indexOf("-")&&H.test(o)?o=o.replace(Y,"-$&").toLowerCase():null===i&&(i=void 0):l=o="oninput","oninput"===l&&u[o=l]&&(o="oninputCapture"),u[o]=i;}}"select"==e&&u.multiple&&Array.isArray(u.value)&&(u.value=S(t.children).forEach(function(n){n.props.selected=-1!=u.value.indexOf(n.props.value);})),"select"==e&&null!=u.defaultValue&&(u.value=S(t.children).forEach(function(n){n.props.selected=u.multiple?-1!=u.defaultValue.indexOf(n.props.value):u.defaultValue==n.props.value;})),t.class&&!t.className?(u.class=t.class,Object.defineProperty(u,"className",en)):(t.className&&!t.class||t.class&&t.className)&&(u.class=u.className=t.className),n.props=u;}(n),n.$$typeof=B,rn&&rn(n);};var un=l$1.__r;l$1.__r=function(n){un&&un(n),n.__c;};var on=l$1.diffed;l$1.diffed=function(n){on&&on(n);var t=n.props,e=n.__e;null!=e&&"textarea"===n.type&&"value"in t&&t.value!==e.value&&(e.value=null==t.value?"":t.value);};
 
+function ItemValue({
+  itemValue
+}) {
+  return y("div", {
+    className: "mt-2"
+  }, y("div", {
+    className: "cr-text-sm cr-text-center cr-text-slate-500 dark:cr-text-gray-500"
+  }, "Approximately equals to", y("span", {
+    className: "cr-text-themed"
+  }, ` ${itemValue.count} ${itemValue.name}`)), y("div", {
+    className: "cr-flex cr-py-2 cr-justify-center"
+  }, Array(Math.min(itemValue.count, 10)).fill(0).map(_ => ({
+    egg: y(CoffeeIcon, null),
+    coffee: y(CoffeeIcon, null),
+    iphone: y(PhoneIcon, null),
+    paper: y(CoffeeIcon, null)
+  })[itemValue.id])));
+}
+
 function Floating() {
   const floatingRef = _(null);
   const [popupVisible, setPopupVisible] = h(false);
-  const [convertRes, setConvertRes] = h([]);
-  const [rawAmount, setRawAmount] = h("$---");
+  const [rawAmount, setRawAmount] = h(0);
+  const [rawCurrency, setRawCurrency] = h("USD");
+  const [rates, setRates] = h(null);
+  const [priorQueue, setPriorQueue] = h(["USD", "EUR", "JPY", "CNY"]);
   const updatePopupPosition = (x, y) => {
     if (floatingRef.current) {
       const popupWidth = 384;
@@ -165,22 +190,57 @@ function Floating() {
       setPopupVisible(false);
     }
   };
-  const itemValue = F$1(() => convertRes.length > 0 ? estimateValue(convertRes[0].amount) : null, [convertRes]);
+  const [convertRes, itemValue] = F$1(() => {
+    if (!rates) {
+      return [[], null];
+    }
+    let res = priorQueue.map(tarCur => {
+      return {
+        amount: convertAmount(rawAmount, rawCurrency, tarCur, rates),
+        currency: tarCur
+      };
+    });
+    let value = estimateValue(res.filter(i => i.currency === "USD")[0].amount);
+    console.log(res);
+    return [res, value];
+  }, [rawAmount, rawCurrency, rates, priorQueue]);
   p(() => {
-    const handleTextSelection = async e => {
+    chrome.runtime.sendMessage({
+      type: "GetRates"
+    }, function (data) {
+      setRates(data.data);
+    });
+  }, [rawAmount, rawCurrency]);
+  p(() => {
+    // Retrieve the stored primary currency array when the component mounts
+    chrome.storage.sync.get(["priorQueue"], function (result) {
+      if (result.priorQueue && result.priorQueue.length > 0) {
+        setPriorQueue(result.priorQueue);
+      }
+    });
+  }, []);
+  const handleCurrencyChange = event => {
+    const newpriorQueue = event.target.value;
+    const updatedCurrencyArray = [newpriorQueue, ...priorQueue.filter(c => c !== newpriorQueue)];
+    setPriorQueue(updatedCurrencyArray);
+    chrome.storage.sync.set({
+      priorQueue: updatedCurrencyArray
+    }, function () {
+      console.log("Primary currency array updated to", updatedCurrencyArray);
+    });
+    handleConvertIntention(rawAmount, rawCurrency);
+  };
+  const handleConvertIntention = (amount, currency) => {
+    setRawAmount(amount);
+    setRawCurrency(currency);
+  };
+  p(() => {
+    const handleTextSelection = e => {
       let selectedText = window.getSelection().toString();
       if (selectedText && e.target.id !== "cr_container") {
         const extractedAmount = extractAmount(selectedText);
         updatePopupPosition(e.clientX, e.clientY);
-        if (rawAmount) {
-          setRawAmount(`${getSymbol(extractedAmount.currency)}${extractedAmount.amount}`);
-          const res = await chrome.runtime.sendMessage({
-            type: "convert",
-            amount: extractedAmount.amount,
-            currency: extractedAmount.currency
-          });
-          setConvertRes(res["data"]);
-        }
+        handleConvertIntention(extractedAmount.amount, extractedAmount.currency);
       }
     };
     const handleOutsideClick = e => {
@@ -201,56 +261,58 @@ function Floating() {
   }, [popupVisible]);
   return y("div", {
     ref: floatingRef,
-    id: "cr_inner",
-    className: "cr-z-[999] cr-text-slate-800 dark:cr-text-white cr-fixed cr-min-w-56 cr-max-w-sm cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2",
+    className: "cr-z-[999] cr-text-slate-800 dark:cr-text-white cr-fixed cr-w-72 cr-bg-slate-100 dark:cr-bg-slate-800 cr-rounded-lg cr-shadow-2xl cr-border-themed cr-border-solid cr-border-2",
     style: {
       display: "none"
     }
   }, y("div", {
-    className: "cr-bg-themed cr-px-1 cr-justify-between p-4 cr-flex justify-between cr-items-center w-full h-12"
+    className: "cr-bg-themed cr-justify-between cr-px-2 cr-flex cr-items-center"
   }, y("div", {
     className: "cr-text-white cr-flex cr-items-center cr-space-x-1"
-  }, "Current"), y("button", {
-    onClick: hidePopup,
-    className: "p-1"
+  }, "Currates"), y("div", {
+    className: "cr-flex cr-items-center"
+  }, y("button", null, y("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    height: "24",
+    viewBox: "0 -960 960 960",
+    width: "24",
+    className: "cr-fill-white hover:cr-fill-slate-200"
+  }, y("path", {
+    d: "M480-120q-17 0-28.5-11.5T440-160v-160q0-17 11.5-28.5T480-360q17 0 28.5 11.5T520-320v40h280q17 0 28.5 11.5T840-240q0 17-11.5 28.5T800-200H520v40q0 17-11.5 28.5T480-120Zm-320-80q-17 0-28.5-11.5T120-240q0-17 11.5-28.5T160-280h160q17 0 28.5 11.5T360-240q0 17-11.5 28.5T320-200H160Zm160-160q-17 0-28.5-11.5T280-400v-40H160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h120v-40q0-17 11.5-28.5T320-600q17 0 28.5 11.5T360-560v160q0 17-11.5 28.5T320-360Zm160-80q-17 0-28.5-11.5T440-480q0-17 11.5-28.5T480-520h320q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H480Zm160-160q-17 0-28.5-11.5T600-640v-160q0-17 11.5-28.5T640-840q17 0 28.5 11.5T680-800v40h120q17 0 28.5 11.5T840-720q0 17-11.5 28.5T800-680H680v40q0 17-11.5 28.5T640-600Zm-480-80q-17 0-28.5-11.5T120-720q0-17 11.5-28.5T160-760h320q17 0 28.5 11.5T520-720q0 17-11.5 28.5T480-680H160Z"
+  }))), y("button", {
+    onClick: hidePopup
   }, y("svg", {
     xmlns: "http://www.w3.org/2000/svg",
     height: "24",
     viewBox: "0 -960 960 960",
     width: "24",
-    className: "cr-fill-white"
+    className: "cr-fill-white hover:cr-fill-slate-200"
   }, y("path", {
     d: "M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z"
-  })))), y("div", {
+  }))))), y("div", {
     className: "cr-p-2"
   }, y("div", {
     className: "cr-flex cr-justify-between items-center mb-4"
   }, y("span", {
     className: "cr-text-md cr-text-slate-400"
-  }, rawAmount), y("select", {
-    className: "cr-rounded-sm dark:cr-bg-slate-500"
-  }, y("option", null, "CNY"))), y("div", {
-    className: "cr-text-4xl cr-font-bold mb-2"
-  }, convertRes.length > 0 ? `${getSymbol(convertRes[0].currency)}${Math.floor(convertRes[0].amount * 100) / 100}` : "---.--"), y("div", {
+  }, `${getSymbol(rawCurrency)}${rawAmount}`), y("select", {
+    className: "cr-rounded-sm dark:cr-bg-slate-500 cr-px-1",
+    onChange: handleCurrencyChange,
+    value: priorQueue[0]
+  }, priorQueue.map(currency => y("option", {
+    key: currency,
+    value: currency
+  }, currency)))), y("div", {
+    className: `${convertRes[0]?.amount > 1000000000 ? "cr-text-2xl" : "cr-text-4xl"} cr-font-bold mb-2`
+  }, convertRes.length > 0 ? `${getSymbol(convertRes[0].currency)}${Math.floor(convertRes[0].amount * 100) / 100}` : "---.--"), convertRes.length > 0 && itemValue.count > 0 && y(k$1, null, y("div", {
     className: "cr-bg-slate-200 dark:cr-bg-slate-500 cr-w-full cr-my-2 cr-h-[2px]"
   }), y("div", null, convertRes.slice(1).map(res => y("div", {
     className: "cr-flex cr-justify-between cr-px-1 cr-py-1"
   }, y("div", null, res.currency), y("div", null, convertTo2Float(res.amount))))), y("div", {
     className: "cr-bg-slate-200 dark:cr-bg-slate-500 cr-w-full cr-my-2 cr-h-[2px]"
-  }), itemValue && y("div", {
-    className: "mt-2"
-  }, y("div", {
-    className: "cr-text-sm cr-text-center cr-text-slate-500 dark:cr-text-gray-500"
-  }, "Approximately equals to", y("span", {
-    className: "cr-text-themed"
-  }, ` ${itemValue.count} ${itemValue.name}`)), y("div", {
-    className: "cr-flex cr-py-2 cr-justify-center"
-  }, Array(Math.min(itemValue.count, 10)).fill(0).map(_ => ({
-    egg: y(CoffeeIcon, null),
-    coffee: y(CoffeeIcon, null),
-    iphone: y(PhoneIcon, null),
-    paper: y(CoffeeIcon, null)
-  })[itemValue.id])))));
+  }), y(ItemValue, {
+    itemValue: itemValue
+  }))));
 }
 
 function installFloatingService() {
