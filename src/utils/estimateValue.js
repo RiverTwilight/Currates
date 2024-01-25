@@ -1,5 +1,10 @@
 const ITEM_VALUE = [
 	{
+		name: "Gold Bar (1kg)",
+		id: "goldBar",
+		value: 66000,
+	},
+	{
 		name: "iPhone 15",
 		id: "iphone",
 		value: 5999,
@@ -8,11 +13,6 @@ const ITEM_VALUE = [
 		id: "egg",
 		name: "Egg(s)",
 		value: 3,
-	},
-	{
-		id: "apple",
-		name: "Apple(s)",
-		value: 2,
 	},
 	{
 		id: "paper",
@@ -30,7 +30,7 @@ function estimateValue(amount) {
 			res = {
 				name: item.name,
 				count: Math.floor(amount / item.value),
-                id: item.id
+				id: item.id,
 			};
 			break;
 		}

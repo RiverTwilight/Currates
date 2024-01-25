@@ -1,8 +1,8 @@
 import { h, Component, Fragment } from "preact";
-import estimateValue from "../utils/estimateValue";
 import PhoneIcon from "./icons/PhoneIcon";
 import CoffeeIcon from "./icons/CoffeeIcon";
-import { useMemo } from "react";
+import EggIcon from "./icons/EggIcon";
+import GoldenIcon from "./icons/GoldenIcon";
 
 export default function ItemValue({ itemValue }) {
 	return (
@@ -17,8 +17,8 @@ export default function ItemValue({ itemValue }) {
 					.map(
 						(_) =>
 							({
-								egg: <CoffeeIcon />,
-								coffee: <CoffeeIcon />,
+								egg: <EggIcon />,
+								goldBar: <GoldenIcon />,
 								iphone: <PhoneIcon />,
 								paper: <CoffeeIcon />,
 							}[itemValue.id])
