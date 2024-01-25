@@ -183,7 +183,7 @@ function Floating() {
   const [rawAmount, setRawAmount] = h(0);
   const [rawCurrency, setRawCurrency] = h("USD");
   const [rates, setRates] = h(null);
-  const [priorQueue, setPriorQueue] = h(["USD", "EUR", "JPY", "CNY"]);
+  const [priorQueue, setPriorQueue] = h(["USD", "GBP", "EUR", "JPY", "CNY", "PHP"]);
   const updatePopupPosition = (x, y) => {
     if (floatingRef.current) {
       const popupWidth = 384;
@@ -297,15 +297,7 @@ function Floating() {
     className: "cr-text-white cr-flex cr-items-center cr-space-x-1"
   }, "Currates"), y("div", {
     className: "cr-flex cr-items-center"
-  }, y("button", null, y("svg", {
-    xmlns: "http://www.w3.org/2000/svg",
-    height: "24",
-    viewBox: "0 -960 960 960",
-    width: "24",
-    className: "cr-fill-white hover:cr-fill-slate-200"
-  }, y("path", {
-    d: "M480-120q-17 0-28.5-11.5T440-160v-160q0-17 11.5-28.5T480-360q17 0 28.5 11.5T520-320v40h280q17 0 28.5 11.5T840-240q0 17-11.5 28.5T800-200H520v40q0 17-11.5 28.5T480-120Zm-320-80q-17 0-28.5-11.5T120-240q0-17 11.5-28.5T160-280h160q17 0 28.5 11.5T360-240q0 17-11.5 28.5T320-200H160Zm160-160q-17 0-28.5-11.5T280-400v-40H160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h120v-40q0-17 11.5-28.5T320-600q17 0 28.5 11.5T360-560v160q0 17-11.5 28.5T320-360Zm160-80q-17 0-28.5-11.5T440-480q0-17 11.5-28.5T480-520h320q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H480Zm160-160q-17 0-28.5-11.5T600-640v-160q0-17 11.5-28.5T640-840q17 0 28.5 11.5T680-800v40h120q17 0 28.5 11.5T840-720q0 17-11.5 28.5T800-680H680v40q0 17-11.5 28.5T640-600Zm-480-80q-17 0-28.5-11.5T120-720q0-17 11.5-28.5T160-760h320q17 0 28.5 11.5T520-720q0 17-11.5 28.5T480-680H160Z"
-  }))), y("button", {
+  }, y("button", {
     onClick: hidePopup
   }, y("svg", {
     xmlns: "http://www.w3.org/2000/svg",
