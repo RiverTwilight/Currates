@@ -1,5 +1,8 @@
 'use strict';
 
+const apiKey = "cabbb4fff29349a2a637f2cea009dac7";
+const apiUrl = `https://openexchangerates.org/api/latest.json?app_id=${apiKey}`;
+const CACHE_UPDATE_FREQUENCY = 3600000;
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.type === "convert") {
     (async () => {
@@ -38,15 +41,19 @@ function convertAmount(amountStr, originalCurrency, targetCurrency, rates) {
   return value / rates[originalCurrency] * rates[targetCurrency];
 }
 async function getRates() {
-  let apiKey = "cabbb4fff29349a2a637f2cea009dac7"; // Replace with your API key
-  let apiUrl = `https://openexchangerates.org/api/latest.json?app_id=${apiKey}`;
-
-  // chrome.storage.local.set({
-  // 	convertedAmount: convertedAmount,
-  // });
-
+  const cache = await chrome.storage.local.get("cachedRates");
+  if (cache.cachedRates && Date.now() - cache.cachedRates.createAt < CACHE_UPDATE_FREQUENCY) {
+    console.log("Use cached");
+    return cache.cachedRates.data;
+  }
   let response = await fetch(apiUrl);
   let data = await response.json();
   let rates = data.rates;
+  chrome.storage.local.set({
+    cachedRates: {
+      createAt: Date.now(),
+      data: rates
+    }
+  });
   return rates;
 }

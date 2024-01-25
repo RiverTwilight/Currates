@@ -59,6 +59,7 @@ After user opened a webpage, the extension will:
 
 -   [CoinMarketCap](https://pro.coinmarketcap.com/signup/?plan=0): API
 -   [OpenExchange](https://pro.coinmarketcap.com/signup/?plan=0): API
+-   [Xe Symbol](https://www.xe.com/symbols/)
 
 ## License
 

@@ -17,11 +17,17 @@ function convertToNumeric(amountStr) {
 	return parseFloat(amount) * multiplier;
 }
 
+// https://www.xe.com/symbols/
 function getSymbol(currency) {
 	return {
 		EUR: "€",
 		USD: "$",
 		CNY: "¥",
+		JPY: "¥",
+		AFN: "؋",
+		EGP: "£",
+		PHP: "₱",
+		CUP: "₱",
 	}[currency];
 }
 
@@ -31,10 +37,10 @@ function convertTo2Float(num) {
 
 function extractAmount(rawText) {
 	// Regex for currencies starting with a symbol, including commas
-	let symbolRegex = /([\$¥](\d{1,3}(?:,\d{3})*(?:\.\d+)?))/;
+	let symbolRegex = /([\$¥£€₩](\d{1,3}(?:,\d{3})*(?:\.\d+)?))/;
 	// Regex for currencies ending with a word, including large number words
 	let wordRegex =
-		/((\d{1,3}(?:,\d{3})*\s?(?:billion|million|thousand)?)\s(euros|euro|dollars|元))/i;
+		/((\d{1,3}(?:,\d{3})*\s?(?:billion|million|thousand)?)\s(euros|euro|dollars|元|yen|yuan|pounds))/i;
 
 	let symbolMatch = rawText.match(symbolRegex);
 	let wordMatch = rawText.match(wordRegex);
@@ -59,8 +65,14 @@ function extractAmount(rawText) {
 
 	if (textMatched.match(/(dollar|dollars|\$)/i)) {
 		currency = "USD";
-	} else if (textMatched.match(/(euro|euros)/i)) {
+	} else if (textMatched.match(/(euro|euros|€)/i)) {
 		currency = "EUR";
+	} else if (textMatched.match(/(yen|¥)/i)) {
+		currency = "JPY";
+	} else if (textMatched.match(/(₩)/i)) {
+		currency = "KRW";
+	} else if (textMatched.match(/(元|yuan)/i)) {
+		currency = "CNY";
 	}
 
 	return {

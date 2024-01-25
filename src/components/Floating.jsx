@@ -37,7 +37,7 @@ export default function Floating() {
 	useEffect(() => {
 		const handleTextSelection = async (e) => {
 			let selectedText = window.getSelection().toString();
-			if (selectedText) {
+			if (selectedText && e.target.id !== "cr_container") {
 				const extractedAmount = extractAmount(selectedText);
 				updatePopupPosition(e.clientX, e.clientY);
 
@@ -70,7 +70,7 @@ export default function Floating() {
 				) {
 					hidePopup();
 				}
-			}, 200);
+			}, 0);
 		};
 
 		document.addEventListener("mouseup", handleTextSelection);
@@ -109,7 +109,7 @@ export default function Floating() {
 					<span className="cr-text-md cr-text-slate-400">
 						{rawAmount}
 					</span>
-					<select>
+					<select className="cr-rounded-sm dark:cr-bg-slate-500">
 						<option>CNY</option>
 					</select>
 				</div>

@@ -22,11 +22,18 @@ function convertToNumeric(amountStr) {
   // Parse the numeric value
   return parseFloat(amount) * multiplier;
 }
+
+// https://www.xe.com/symbols/
 function getSymbol(currency) {
   return {
     EUR: "€",
     USD: "$",
-    CNY: "¥"
+    CNY: "¥",
+    JPY: "¥",
+    AFN: "؋",
+    EGP: "£",
+    PHP: "₱",
+    CUP: "₱"
   }[currency];
 }
 function convertTo2Float(num) {
@@ -34,9 +41,9 @@ function convertTo2Float(num) {
 }
 function extractAmount(rawText) {
   // Regex for currencies starting with a symbol, including commas
-  let symbolRegex = /([\$¥](\d{1,3}(?:,\d{3})*(?:\.\d+)?))/;
+  let symbolRegex = /([\$¥£€₩](\d{1,3}(?:,\d{3})*(?:\.\d+)?))/;
   // Regex for currencies ending with a word, including large number words
-  let wordRegex = /((\d{1,3}(?:,\d{3})*\s?(?:billion|million|thousand)?)\s(euros|euro|dollars|元))/i;
+  let wordRegex = /((\d{1,3}(?:,\d{3})*\s?(?:billion|million|thousand)?)\s(euros|euro|dollars|元|yen|yuan|pounds))/i;
   let symbolMatch = rawText.match(symbolRegex);
   let wordMatch = rawText.match(wordRegex);
   let amountMatched = symbolMatch ? symbolMatch[2] : wordMatch ? wordMatch[2] : null;
@@ -47,8 +54,14 @@ function extractAmount(rawText) {
   let currency = "USD";
   if (textMatched.match(/(dollar|dollars|\$)/i)) {
     currency = "USD";
-  } else if (textMatched.match(/(euro|euros)/i)) {
+  } else if (textMatched.match(/(euro|euros|€)/i)) {
     currency = "EUR";
+  } else if (textMatched.match(/(yen|¥)/i)) {
+    currency = "JPY";
+  } else if (textMatched.match(/(₩)/i)) {
+    currency = "KRW";
+  } else if (textMatched.match(/(元|yuan)/i)) {
+    currency = "CNY";
   }
   return {
     currency,
@@ -138,7 +151,7 @@ function Floating() {
   p(() => {
     const handleTextSelection = async e => {
       let selectedText = window.getSelection().toString();
-      if (selectedText) {
+      if (selectedText && e.target.id !== "cr_container") {
         const extractedAmount = extractAmount(selectedText);
         updatePopupPosition(e.clientX, e.clientY);
         if (rawAmount) {
@@ -159,7 +172,7 @@ function Floating() {
         if (popupVisible && floatingRef.current && e.target.id !== "cr_container") {
           hidePopup();
         }
-      }, 200);
+      }, 0);
     };
     document.addEventListener("mouseup", handleTextSelection);
     document.addEventListener("click", handleOutsideClick);
@@ -195,7 +208,9 @@ function Floating() {
     className: "cr-flex cr-justify-between items-center mb-4"
   }, y("span", {
     className: "cr-text-md cr-text-slate-400"
-  }, rawAmount), y("select", null, y("option", null, "CNY"))), y("div", {
+  }, rawAmount), y("select", {
+    className: "cr-rounded-sm dark:cr-bg-slate-500"
+  }, y("option", null, "CNY"))), y("div", {
     className: "cr-text-4xl cr-font-bold mb-2"
   }, convertRes.length > 0 ? `${getSymbol(convertRes[0].currency)}${Math.floor(convertRes[0].amount * 100) / 100}` : "---.--"), y("div", {
     className: "cr-bg-slate-200 dark:cr-bg-slate-500 cr-w-full cr-my-2 cr-h-[2px]"
