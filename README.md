@@ -4,7 +4,7 @@
   <img width="180" src="./dist/icon/android-icon-192x192.png">
 </a>
 
-<h1 align="center">Current</h1>
+<h1 align="center">Currates</h1>
 
 [![Release](https://img.shields.io/github/release/rivertwilight/timeline.svg)](https://github.com/rivertwilight/timeline/releases)
 
@@ -12,20 +12,18 @@
 
 This browser extension can immersively convert the currency to your local currency simply by selecting the text in the webpage.
 
-https://github.com/RiverTwilight/Timeline/assets/52880665/57179574-3c24-48ea-b21d-44cdf3ce444a
-
 ## Features
 
 -   [x] Detect & convert currency by selecting text
--   [-] Cryptocurrency
 -   [x] Display multiple results in one screen
 -   [x] Estimate value based on items
+-   [x] Customize OpenExchange key
 -   [x] Full open-source, no privacy worry
 -   [x] Tiny & Super fast (Only 2kb packed size)
+-   [-] Cryptocurrency
 -   [-] Exception List
--   [-] Customize OpenExchange key
 
-## Get Current
+## Get Currates
 
 -   [Chrome Web Store](https://chrome.google.com/webstore/detail/timeline-x-history/fdmmhjkfeembndibfcpiaohjhlnafnpd?hl=en-US)
 -   Firefox Add-ons (Working)
@@ -65,4 +63,4 @@ After user opened a webpage, the extension will:
 
 MIT.
 
-Copyright © 2024 YGeeker
+Copyright © 2024 RiverTwilight

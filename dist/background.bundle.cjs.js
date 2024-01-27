@@ -1,7 +1,8 @@
 'use strict';
 
 const defaultApiKey = "cabbb4fff29349a2a637f2cea009dac7";
-const CACHE_UPDATE_FREQUENCY = 3600000;
+const CACHE_UPDATE_FREQUENCY = 3600000; // Default set to 1 hour
+
 async function getRates() {
   // Retrieve the user-provided API key, or use the default
   const {
