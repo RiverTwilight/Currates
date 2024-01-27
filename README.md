@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://www.ygeeker.com">
-  <img width="180" src="./dist/icon/android-icon-192x192.png">
+  <img width="180" src="./dist/icon/logo/android-icon-192x192.png">
 </a>
 
 <h1 align="center">Currates</h1>
@@ -11,6 +11,8 @@
 </div>
 
 This browser extension can immersively convert the currency to your local currency simply by selecting the text in the webpage.
+
+https://github.com/RiverTwilight/Currates/assets/52880665/15b828d5-be39-4cdd-9895-6fd4cc5e3a56
 
 ## Features
 
