@@ -75,7 +75,7 @@ const App = () => {
   }, y("img", {
     height: 56,
     width: 56,
-    src: "https://www.ygeeker.com/logo.svg"
+    src: chrome.runtime.getURL("icon/ygeeker.png")
   })), y("span", {
     className: "cr-mt-2 cr-text-sm cr-text-slate-400"
   }, "A Work From"), y("div", {
@@ -86,13 +86,13 @@ const App = () => {
     className: "cr-flex cr-mt-2 cr-text-slate-500 cr-space-x-1"
   }, y("a", {
     href: "https://www.ygeeker.com/support/currates/intro",
-    className: "px-2"
+    className: "px-2 hover:cr-underline"
   }, "Help"), y("span", null, "\xB7"), y("a", {
     href: "https://www.ygeeker.com/support/currates/legal/term-of-use",
-    className: "px-2"
+    className: "px-2 hover:cr-underline"
   }, "Terms"), y("span", null, "\xB7"), y("a", {
     href: "https://www.ygeeker.com/support/currates/intro",
-    className: "px-2"
+    className: "px-2 hover:cr-underline"
   }, "Feedback"))))));
 };
 D(y(App, null), document.body);

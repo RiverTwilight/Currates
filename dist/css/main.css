@@ -910,6 +910,10 @@ video {
   fill: #e2e8f0;
 }
 
+.hover\:cr-underline:hover {
+  text-decoration-line: underline;
+}
+
 .focus\:cr-border-none:focus {
   border-style: none;
 }

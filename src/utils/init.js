@@ -20,7 +20,7 @@ const rawConfig = {
 	],
 	web_accessible_resources: [
 		{
-			resources: ["css/main.css"],
+			resources: ["css/main.css", "icon/ygeeker.png"],
 			matches: ["<all_urls>"],
 		},
 	],
