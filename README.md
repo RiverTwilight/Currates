@@ -25,7 +25,7 @@ This browser extension can immersively convert the currency to your local curren
 
 ## Get Currates
 
--   [Chrome Web Store](https://chrome.google.com/webstore/detail/timeline-x-history/fdmmhjkfeembndibfcpiaohjhlnafnpd?hl=en-US)
+-   [Chrome Web Store](https://chromewebstore.google.com/detail/currates-immersive-curren/lgdpchmlpgooalofkdcgciaibpieoofc?hl=en-US)
 -   Firefox Add-ons (Working)
 -   Edge Add-ons (Working)
 
