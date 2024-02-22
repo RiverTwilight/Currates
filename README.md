@@ -66,3 +66,7 @@ After user opened a webpage, the extension will:
 MIT.
 
 Copyright © 2024 RiverTwilight
+
+<a href="https://www.ygeeker.com">
+  <img width="180" alt="create by ygeeker" src="https://www.ygeeker.com/badge/create.png">
+</a>
