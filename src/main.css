@@ -6,3 +6,14 @@
 	background-color: black;
 	color: white;
 }
+
+.cr-hide-arrow::-ms-expand {
+	display: none;
+}
+
+select.cr-hide-arrow {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	text-indent: 1px;
+	text-overflow: "";
+}

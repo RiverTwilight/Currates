@@ -122,6 +122,11 @@ export default function Floating() {
 		handleConvertIntention(rawAmount, rawCurrency);
 	};
 
+	const handleRawCurrencyChange = (event) => {
+		setRawCurrency(event.target.value);
+		handleConvertIntention(rawAmount, event.target.value);
+	};
+
 	const handleConvertIntention = (amount, currency) => {
 		setRawAmount(amount);
 		setRawCurrency(currency);
@@ -131,7 +136,11 @@ export default function Floating() {
 		const handleTextSelection = (e) => {
 			let selectedText = window.getSelection().toString();
 
-			if (selectedText && e.target.id !== "cr_container") {
+			if (
+				selectedText &&
+				selectedText.length < 50 &&
+				e.target.id !== "cr_container"
+			) {
 				const extractedAmount = extractAmount(selectedText);
 				updatePopupPosition(e.clientX, e.clientY);
 				handleConvertIntention(
@@ -193,17 +202,41 @@ export default function Floating() {
 					<span className="cr-text-md cr-text-slate-400">
 						{`${getSymbol(rawCurrency)}${rawAmount}`}
 					</span>
-					<select
-						className="cr-rounded-sm dark:cr-bg-slate-500 cr-px-1"
-						onChange={handleCurrencyChange}
-						value={priorQueue[0]}
-					>
-						{priorQueue.map((currency) => (
-							<option key={currency} value={currency}>
-								{currency}
-							</option>
-						))}
-					</select>
+					<div className="cr-flex cr-items-center">
+						<select
+							className="cr-hide-arrow cr-rounded-sm dark:cr-bg-slate-500 cr-px-1"
+							onChange={handleRawCurrencyChange}
+							value={rawCurrency}
+						>
+							{priorQueue.map((currency) => (
+								<option key={currency} value={currency}>
+									{currency}
+								</option>
+							))}
+						</select>
+
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							height="20"
+							viewBox="0 -960 960 960"
+							width="20"
+							className="cr-fill-slate-400"
+						>
+							<path d="M420-308q-8 0-14-5.5t-6-14.5v-304q0-9 6-14.5t14-5.5q2 0 14 6l145 145q5 5 7 10t2 11q0 6-2 11t-7 10L434-314q-3 3-6.5 4.5T420-308Z" />
+						</svg>
+
+						<select
+							className="cr-hide-arrow cr-rounded-sm dark:cr-bg-slate-500 cr-px-1"
+							onChange={handleCurrencyChange}
+							value={priorQueue[0]}
+						>
+							{priorQueue.map((currency) => (
+								<option key={currency} value={currency}>
+									{currency}
+								</option>
+							))}
+						</select>
+					</div>
 				</div>
 				<div
 					className={`${

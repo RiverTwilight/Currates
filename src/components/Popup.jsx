@@ -48,7 +48,10 @@ const App = () => {
 						An OpenExchange API allows you request rates more
 						frequently. It's recommend for you to apply your own
 						FREE API key.
-						<a href="https://" className="cr-text-blue-500">
+						<a
+							href="https://www.ygeeker.com/support/currates/intro"
+							className="cr-text-blue-500"
+						>
 							&nbsp;Learn More...
 						</a>
 					</div>

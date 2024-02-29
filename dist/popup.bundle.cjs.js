@@ -48,7 +48,7 @@ const App = () => {
   })), y("div", {
     className: "cr-text-slate-500 cr-p-2"
   }, "An OpenExchange API allows you request rates more frequently. It's recommend for you to apply your own FREE API key.", y("a", {
-    href: "https://",
+    href: "https://www.ygeeker.com/support/currates/intro",
     className: "cr-text-blue-500"
   }, "\xA0Learn More...")), y("div", {
     className: "cr-mt-2"

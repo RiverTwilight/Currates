@@ -720,6 +720,10 @@ video {
   fill: #94a3b8;
 }
 
+.cr-fill-slate-500 {
+  fill: #64748b;
+}
+
 .cr-fill-themed {
   fill: #b2913c;
 }
@@ -837,6 +841,17 @@ video {
 .active {
   background-color: black;
   color: white;
+}
+
+.cr-hide-arrow::-ms-expand {
+  display: none;
+}
+
+select.cr-hide-arrow {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
 }
 
 .hover\:cr-fill-slate-200:hover {

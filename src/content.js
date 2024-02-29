@@ -4,7 +4,7 @@ import Floating from "./components/Floating.jsx";
 function installFloatingService() {
 	const floatingContainer = document.createElement("div");
 	const shadowRoot = floatingContainer.attachShadow({ mode: "open" });
-	floatingContainer.id = "cr_container"
+	floatingContainer.id = "cr_container";
 
 	// Create a container inside the shadow root
 	const shadowContainer = document.createElement("div");
