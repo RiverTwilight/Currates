@@ -3,7 +3,7 @@ import fs from "fs";
 const rawConfig = {
 	name: "Currates - Immersive Currency Converter",
 	manifest_version: 3,
-	version: "1.0",
+	version: "1.1",
 	icons: {
 		16: "./icon/logo/android-icon-36x36.png",
 		48: "./icon/logo/android-icon-48x48.png",

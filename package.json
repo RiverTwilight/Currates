@@ -1,12 +1,13 @@
 {
 	"name": "currates",
-	"version": "1.0",
+	"version": "1.1.0",
 	"description": "🎞️ Save the timeline browse history of your X (Twitter).",
 	"main": "background.js",
 	"type": "module",
 	"scripts": {
 		"predev": "node ./src/utils/init.js",
-		"dev": "rollup -c -w",
+		"dev": "npm-run-all dev:*",
+		"dev:core": "rollup -c -w",
 		"dev:style": "npx tailwindcss -i ./src/main.css -o ./dist/css/main.css --watch",
 		"build": "rollup -c",
 		"build:content": "rollup ./src/components/content.js --file ./dist/content.bundle.js",
@@ -35,6 +36,7 @@
 		"@rollup/plugin-typescript": "^11.0.0",
 		"atomizer": "^3.24.2",
 		"concurrently": "^7.6.0",
+		"npm-run-all": "^4.1.5",
 		"rollup": "^3.10.0",
 		"typescript": "^4.9.4"
 	}
