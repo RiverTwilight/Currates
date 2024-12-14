@@ -28,6 +28,10 @@ const App = () => {
 		chrome.storage.sync.set({ apiKey: newApiKey });
 	};
 
+	const handleExternalLink = (url) => {
+		chrome.tabs.create({ url });
+	};
+
 	return (
 		<div className="cr-w-72 cr-bg-slate-100 cr-pb-4">
 			<Header />
@@ -48,28 +52,29 @@ const App = () => {
 						An OpenExchange API allows you request rates more
 						frequently. It's recommend for you to apply your own
 						FREE API key.
-						<a
-							href="https://www.ygeeker.com/support/currates/intro"
-							className="cr-text-blue-500"
+						<span
+							onClick={() => handleExternalLink("https://www.ygeeker.com/support/currates/intro")}
+							className="cr-text-blue-500 cr-cursor-pointer"
 						>
 							&nbsp;Learn More...
-						</a>
+						</span>
 					</div>
 					<div className="cr-mt-2">
-						<a href="https://github.com/rivertwilight/currates">
-							<div className="cr-px-2 cr-py-1 cr-flex cr-justify-between cr-items-center cr-w-full cr-bg-white">
-								<label className="cr-text-base">GitHub</label>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									height="24"
-									viewBox="0 -960 960 960"
-									width="24"
-									className="cr-fill-slate-400"
-								>
-									<path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h240q17 0 28.5 11.5T480-800q0 17-11.5 28.5T440-760H200v560h560v-240q0-17 11.5-28.5T800-480q17 0 28.5 11.5T840-440v240q0 33-23.5 56.5T760-120H200Zm560-584L416-360q-11 11-28 11t-28-11q-11-11-11-28t11-28l344-344H600q-17 0-28.5-11.5T560-800q0-17 11.5-28.5T600-840h240v240q0 17-11.5 28.5T800-560q-17 0-28.5-11.5T760-600v-104Z" />
-								</svg>
-							</div>
-						</a>
+						<div
+							onClick={() => handleExternalLink("https://github.com/rivertwilight/currates")}
+							className="cr-px-2 cr-py-1 cr-flex cr-justify-between cr-items-center cr-w-full cr-bg-white cr-cursor-pointer"
+						>
+							<label className="cr-text-base">GitHub</label>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								height="24"
+								viewBox="0 -960 960 960"
+								width="24"
+								className="cr-fill-slate-400"
+							>
+								<path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h240q17 0 28.5 11.5T480-800q0 17-11.5 28.5T440-760H200v560h560v-240q0-17 11.5-28.5T800-480q17 0 28.5 11.5T840-440v240q0 33-23.5 56.5T760-120H200Zm560-584L416-360q-11 11-28 11t-28-11q-11-11-11-28t11-28l344-344H600q-17 0-28.5-11.5T560-800q0-17 11.5-28.5T600-840h240v240q0 17-11.5 28.5T800-560q-17 0-28.5-11.5T760-600v-104Z" />
+							</svg>
+						</div>
 						<div className="cr-text-slate-500 cr-p-2">
 							Currates is totally free. Give us a star on GitHub
 							to support us if you like it!
@@ -87,29 +92,34 @@ const App = () => {
 							A Work From
 						</span>
 						<div className="cr-text-lg">
-							<a href="https://www.ygeeker.com">YGeeker</a>
+							<span
+								onClick={() => handleExternalLink("https://www.ygeeker.com")}
+								className="cr-cursor-pointer"
+							>
+								YGeeker
+							</span>
 						</div>
 						<div className="cr-flex cr-mt-2 cr-text-slate-500 cr-space-x-1">
-							<a
-								href="https://www.ygeeker.com/support/currates/intro"
-								className="px-2 hover:cr-underline"
+							<span
+								onClick={() => handleExternalLink("https://www.ygeeker.com/support/currates/intro")}
+								className="px-2 hover:cr-underline cr-cursor-pointer"
 							>
 								Help
-							</a>
+							</span>
 							<span>·</span>
-							<a
-								href="https://www.ygeeker.com/support/currates/legal/term-of-use"
-								className="px-2 hover:cr-underline"
+							<span
+								onClick={() => handleExternalLink("https://www.ygeeker.com/support/currates/legal/term-of-use")}
+								className="px-2 hover:cr-underline cr-cursor-pointer"
 							>
 								Terms
-							</a>
+							</span>
 							<span>·</span>
-							<a
-								href="https://www.ygeeker.com/support/currates/intro"
-								className="px-2 hover:cr-underline"
+							<span
+								onClick={() => handleExternalLink("https://www.ygeeker.com/support/currates/intro")}
+								className="px-2 hover:cr-underline cr-cursor-pointer"
 							>
 								Feedback
-							</a>
+							</span>
 						</div>
 					</div>
 				</main>

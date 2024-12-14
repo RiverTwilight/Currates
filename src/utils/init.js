@@ -2,12 +2,14 @@ import fs from "fs";
 
 const rawConfig = {
 	name: "Currates - Immersive Currency Converter",
+	short_name: "Currates",
+	description: "Convert currency in real-time with just select the text.",
 	manifest_version: 3,
-	version: "1.1",
+	version: "1.2",
 	icons: {
-		16: "./icon/logo/android-icon-36x36.png",
-		48: "./icon/logo/android-icon-48x48.png",
-		96: "./icon/logo/android-icon-96x96.png",
+		16: "./icon/logo/icon-16.png",
+		48: "./icon/logo/icon-48.png",
+		96: "./icon/logo/icon-96.png",
 		128: "./icon/logo/icon-128.png",
 	},
 	permissions: ["storage"],
@@ -29,8 +31,8 @@ const rawConfig = {
 	},
 	action: {
 		default_icon: {
-			16: "./icon/logo/android-icon-36x36.png",
-			48: "./icon/logo/android-icon-48x48.png",
+			16: "./icon/logo/icon-16.png",
+			48: "./icon/logo/icon-48.png",
 		},
 		default_popup: "popup.html",
 	},
