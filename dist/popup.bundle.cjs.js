@@ -49,17 +49,17 @@ const App = () => {
     value: apiKey,
     onChange: handleApiKeyChange,
     placeholder: "cab****dac7",
-    className: "cr-input cr-p-1 focus:cr-border-none"
+    className: "cr-input cr-p-1 focus:cr-border-none hover:cr-cursor-text"
   })), y("div", {
     className: "cr-text-slate-500 cr-p-2"
   }, "An OpenExchange API allows you request rates more frequently. It's recommend for you to apply your own FREE API key.", y("span", {
     onClick: () => handleExternalLink("https://www.ygeeker.com/support/currates/intro"),
-    className: "cr-text-blue-500 cr-cursor-pointer"
+    className: "cr-text-blue-500 hover:cr-cursor-pointer hover:cr-underline"
   }, "\xA0Learn More...")), y("div", {
     className: "cr-mt-2"
   }, y("div", {
     onClick: () => handleExternalLink("https://github.com/rivertwilight/currates"),
-    className: "cr-px-2 cr-py-1 cr-flex cr-justify-between cr-items-center cr-w-full cr-bg-white cr-cursor-pointer"
+    className: "cr-px-2 cr-py-1 cr-flex cr-justify-between cr-items-center cr-w-full cr-bg-white hover:cr-cursor-pointer hover:cr-bg-slate-50"
   }, y("label", {
     className: "cr-text-base"
   }, "GitHub"), y("svg", {
@@ -86,18 +86,18 @@ const App = () => {
     className: "cr-text-lg"
   }, y("span", {
     onClick: () => handleExternalLink("https://www.ygeeker.com"),
-    className: "cr-cursor-pointer"
+    className: "hover:cr-cursor-pointer hover:cr-underline"
   }, "YGeeker")), y("div", {
     className: "cr-flex cr-mt-2 cr-text-slate-500 cr-space-x-1"
   }, y("span", {
     onClick: () => handleExternalLink("https://www.ygeeker.com/support/currates/intro"),
-    className: "px-2 hover:cr-underline cr-cursor-pointer"
+    className: "px-2 hover:cr-cursor-pointer hover:cr-underline"
   }, "Help"), y("span", null, "\xB7"), y("span", {
     onClick: () => handleExternalLink("https://www.ygeeker.com/support/currates/legal/term-of-use"),
-    className: "px-2 hover:cr-underline cr-cursor-pointer"
+    className: "px-2 hover:cr-cursor-pointer hover:cr-underline"
   }, "Terms"), y("span", null, "\xB7"), y("span", {
     onClick: () => handleExternalLink("https://www.ygeeker.com/support/currates/intro"),
-    className: "px-2 hover:cr-underline cr-cursor-pointer"
+    className: "px-2 hover:cr-cursor-pointer hover:cr-underline"
   }, "Feedback"))))));
 };
 D(y(App, null), document.body);

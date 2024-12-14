@@ -45,7 +45,7 @@ const App = () => {
 							value={apiKey}
 							onChange={handleApiKeyChange}
 							placeholder="cab****dac7"
-							className="cr-input cr-p-1 focus:cr-border-none"
+							className="cr-input cr-p-1 focus:cr-border-none hover:cr-cursor-text"
 						/>
 					</div>
 					<div className="cr-text-slate-500 cr-p-2">
@@ -53,16 +53,24 @@ const App = () => {
 						frequently. It's recommend for you to apply your own
 						FREE API key.
 						<span
-							onClick={() => handleExternalLink("https://www.ygeeker.com/support/currates/intro")}
-							className="cr-text-blue-500 cr-cursor-pointer"
+							onClick={() =>
+								handleExternalLink(
+									"https://www.ygeeker.com/support/currates/intro"
+								)
+							}
+							className="cr-text-blue-500 hover:cr-cursor-pointer hover:cr-underline"
 						>
 							&nbsp;Learn More...
 						</span>
 					</div>
 					<div className="cr-mt-2">
 						<div
-							onClick={() => handleExternalLink("https://github.com/rivertwilight/currates")}
-							className="cr-px-2 cr-py-1 cr-flex cr-justify-between cr-items-center cr-w-full cr-bg-white cr-cursor-pointer"
+							onClick={() =>
+								handleExternalLink(
+									"https://github.com/rivertwilight/currates"
+								)
+							}
+							className="cr-px-2 cr-py-1 cr-flex cr-justify-between cr-items-center cr-w-full cr-bg-white hover:cr-cursor-pointer hover:cr-bg-slate-50"
 						>
 							<label className="cr-text-base">GitHub</label>
 							<svg
@@ -93,30 +101,46 @@ const App = () => {
 						</span>
 						<div className="cr-text-lg">
 							<span
-								onClick={() => handleExternalLink("https://www.ygeeker.com")}
-								className="cr-cursor-pointer"
+								onClick={() =>
+									handleExternalLink(
+										"https://www.ygeeker.com"
+									)
+								}
+								className="hover:cr-cursor-pointer hover:cr-underline"
 							>
 								YGeeker
 							</span>
 						</div>
 						<div className="cr-flex cr-mt-2 cr-text-slate-500 cr-space-x-1">
 							<span
-								onClick={() => handleExternalLink("https://www.ygeeker.com/support/currates/intro")}
-								className="px-2 hover:cr-underline cr-cursor-pointer"
+								onClick={() =>
+									handleExternalLink(
+										"https://www.ygeeker.com/support/currates/intro"
+									)
+								}
+								className="px-2 hover:cr-cursor-pointer hover:cr-underline"
 							>
 								Help
 							</span>
 							<span>·</span>
 							<span
-								onClick={() => handleExternalLink("https://www.ygeeker.com/support/currates/legal/term-of-use")}
-								className="px-2 hover:cr-underline cr-cursor-pointer"
+								onClick={() =>
+									handleExternalLink(
+										"https://www.ygeeker.com/support/currates/legal/term-of-use"
+									)
+								}
+								className="px-2 hover:cr-cursor-pointer hover:cr-underline"
 							>
 								Terms
 							</span>
 							<span>·</span>
 							<span
-								onClick={() => handleExternalLink("https://www.ygeeker.com/support/currates/intro")}
-								className="px-2 hover:cr-underline cr-cursor-pointer"
+								onClick={() =>
+									handleExternalLink(
+										"https://www.ygeeker.com/support/currates/intro"
+									)
+								}
+								className="px-2 hover:cr-cursor-pointer hover:cr-underline"
 							>
 								Feedback
 							</span>
